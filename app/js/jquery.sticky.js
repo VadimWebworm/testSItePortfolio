@@ -10,21 +10,23 @@
 //       It will only set the 'top' and 'position' of your element, you
 //       might need to adjust the width in some cases.
 
-(function($) {
+(function ($) {
+  // var $height = $(window).height(); // Высота экрана 
+  var $width = $(window).width(); // Ширина экрана
   var defaults = {
-      topSpacing: 0,
-      bottomSpacing: 0,
-      className: 'is-sticky',
-      wrapperClassName: 'sticky-wrapper',
-      center: false,
-      getWidthFrom: '',
-      responsiveWidth: false
-    },
+    topSpacing: 0,
+    bottomSpacing: 0,
+    className: 'is-sticky',
+    wrapperClassName: 'sticky-wrapper',
+    center: false,
+    getWidthFrom: '',
+    responsiveWidth: false
+  },
     $window = $(window),
     $document = $(document),
     sticked = [],
     windowHeight = $window.height(),
-    scroller = function() {
+    scroller = function () {
       var scrollTop = $window.scrollTop(),
         documentHeight = $document.height(),
         dwh = documentHeight - windowHeight,
@@ -39,7 +41,7 @@
           if (s.currentTop !== null) {
             s.stickyElement
               .css('position', '')
-              // .css('width', '100%')
+              .css('max-width', $width)
               .css('top', '');
             s.stickyElement.trigger('sticky-end', [s]).parent().removeClass(s.className);
             s.currentTop = null;
@@ -56,7 +58,7 @@
           if (s.currentTop != newTop) {
             s.stickyElement
               .css('position', 'fixed')
-              // .css('width', '97.7%')
+              // .css('max-width', $width)
               .css('top', newTop);
 
             if (typeof s.getWidthFrom !== 'undefined') {
@@ -69,7 +71,7 @@
         }
       }
     },
-    resizer = function() {
+    resizer = function () {
       windowHeight = $window.height();
 
       for (var i = 0; i < sticked.length; i++) {
@@ -80,9 +82,9 @@
       }
     },
     methods = {
-      init: function(options) {
+      init: function (options) {
         var o = $.extend({}, defaults, options);
-        return this.each(function() {
+        return this.each(function () {
           var stickyElement = $(this);
 
           var stickyId = stickyElement.attr('id');
@@ -93,11 +95,11 @@
           stickyElement.wrapAll(wrapper);
 
           if (o.center) {
-            stickyElement.parent().css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
+            stickyElement.parent().css({ width: stickyElement.outerWidth(), marginLeft: "auto", marginRight: "auto" });
           }
 
           if (stickyElement.css("float") == "right") {
-            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
+            stickyElement.css({ "float": "none" }).parent().css({ "float": "right" });
           }
 
           var stickyWrapper = stickyElement.parent();
@@ -115,21 +117,18 @@
         });
       },
       update: scroller,
-      unstick: function(options) {
-        return this.each(function() {
+      unstick: function (options) {
+        return this.each(function () {
           var unstickyElement = $(this);
 
           var removeIdx = -1;
-          for (var i = 0; i < sticked.length; i++)
-          {
-            if (sticked[i].stickyElement.get(0) == unstickyElement.get(0))
-            {
-                removeIdx = i;
+          for (var i = 0; i < sticked.length; i++) {
+            if (sticked[i].stickyElement.get(0) == unstickyElement.get(0)) {
+              removeIdx = i;
             }
           }
-          if(removeIdx != -1)
-          {
-            sticked.splice(removeIdx,1);
+          if (removeIdx != -1) {
+            sticked.splice(removeIdx, 1);
             unstickyElement.unwrap();
             unstickyElement.removeAttr('style');
           }
@@ -146,27 +145,27 @@
     window.attachEvent('onresize', resizer);
   }
 
-  $.fn.sticky = function(method) {
+  $.fn.sticky = function (method) {
     if (methods[method]) {
       return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method ) {
-      return methods.init.apply( this, arguments );
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     } else {
       $.error('Method ' + method + ' does not exist on jQuery.sticky');
     }
   };
 
-  $.fn.unstick = function(method) {
+  $.fn.unstick = function (method) {
     if (methods[method]) {
       return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    } else if (typeof method === 'object' || !method ) {
-      return methods.unstick.apply( this, arguments );
+    } else if (typeof method === 'object' || !method) {
+      return methods.unstick.apply(this, arguments);
     } else {
       $.error('Method ' + method + ' does not exist on jQuery.sticky');
     }
 
   };
-  $(function() {
+  $(function () {
     setTimeout(scroller, 0);
   });
 })(jQuery);
