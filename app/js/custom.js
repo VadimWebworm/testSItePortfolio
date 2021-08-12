@@ -58,7 +58,7 @@
                     animate: 2000,
                     lineCap:'butt',
                     scaleColor: false,
-                    barColor: '#FF5252',
+                    barColor: '#ffd100',
                     trackColor: 'transparent',
                     lineWidth: 10
                 });
@@ -106,6 +106,9 @@
 			$('#home').css({'background-attachment': 'scroll'});
 		} else {
 			$('#home').parallax('50%', 0.1);
+		}
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			$('.calltoaction__button').removeClass('button');
 		}
 
 
@@ -169,13 +172,20 @@
 			});
 
 	});
-	let items = document.querySelector('.is-sticky')
-	let headerWidht = document.querySelector('.header')
-	if (items === True){
-		headerWidht.add('active')
-	}
-	else{
-		headerWidht.remove('active')
-	}
+	// let items = document.querySelector('.is-sticky')
+	// let headerWidht = document.querySelector('.header')
+	// if (items === True){
+	// 	headerWidht.add('active')
+	// }
+	// else{
+	// 	headerWidht.remove('active')
+	// }
+	$('.navbar-toggle').on('click', function (e) {
+		e.preventDefault();
+		$('.navbar-toggle').toggleClass('menu__btn-active');
+		
+
+
+	})
 
 })(jQuery);

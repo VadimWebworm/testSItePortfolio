@@ -298,49 +298,67 @@ textarea.form-control {
 .calltoaction *{
     text-align: center;
 }
+.calltoaction * {
+    text-align: center;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+}
+//start calltoaction
 .calltoaction {
-    background: url(../images/item-3.jpg);
-	background-color: #222;
-	background-repeat: no-repeat;
-	background-position: 0 0;
-	-webkit-background-size: cover;
-	   -moz-background-size: cover;
-		 -o-background-size: cover;
-			background-size: cover;
-	padding: 50px 0;
-	color: #999;
+    // background: url(../images/item-3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 70px 0;
+    color: #fff;
+    position: relative;
+}
+.calltoaction__overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px 0 25px;
 }
 
 .calltoaction h2 {
-	font-size: 20px;
-	letter-spacing: 1px;
-	margin-bottom: 5px;
-}
-
-.calltoaction-decription{
-    padding-top: 20px;
-    padding-bottom: 30px;
-    font-size: 20px;
+    @include text;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
     color: #fff;
 }
 
-.calltoaction-btn {
-	text-align: center;
+.button__inner {
+    position: relative;
 }
+.calltoaction__button {
+    margin-top: 30px;
+    @include text;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    padding: 8px;
+    width: 120px;
+    height: 45px;
+    animation: radial-pulse 1s infinite;
+	text-decoration: none !important;
+}
+// .calltoaction__button:hover {
+//     transition: ease-in 0.2s;
+//     color: $orange;
+//     animation: none;
+//     background-color: transparent;
+// }
+@keyframes radial-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.5);
+    }
 
-.calltoaction-btn > .btn {
-    background: rgba(255, 255, 255, .8);
-    color: #111;
-	margin-top: 5px;
-	margin-bottom: 5px;
+    100% {
+        box-shadow: 0 0 0 40px rgba(255, 255, 255, 0);
+    }
 }
-.calltoaction-btn > .btn:hover{
-    background: #fff;
-}
+//end calltoaction
 
-.long-down {
-	margin-bottom: 40px;
-}
 
 /* ---------------------------------------------- /*
  * Home
@@ -451,6 +469,7 @@ textarea.form-control {
     background-position: center;
     background-attachment: fixed;
     position: relative;
+	// margin-top: -5px;
 }
 .container__services{
 padding: 0 20px 0 25px;
@@ -589,6 +608,27 @@ padding: 0 20px 0 25px;
  * Skills
 /* ---------------------------------------------- */
 
+// start skills
+#skills {
+    background-color: #000;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.5);
+}
+.skills {
+    padding-bottom: 50px;
+}
+.skills__info {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.skills__title {
+    margin: 100px 10px 50px;
+    color: $orange;
+}
+
+.skill__description {
+    margin-bottom: 50px;
+}
 .chart {
     display: inline-block;
     height: 140px;
@@ -603,25 +643,106 @@ padding: 0 20px 0 25px;
     top: 0;
 }
 .percent {
+    @include text;
     display: inline-block;
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 140px;
     z-index: 2;
+    color: #fff;
 }
 .percent:after {
     content: "%";
     font-size: 50%;
     margin-left: 0.1em;
 }
-
-/* ---------------------------------------------- /*
- * Contact
-/* ---------------------------------------------- */
-
-.ajax-response {
-	text-align: center;
+.text-center {
+    @include title;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #fff;
+    // font-weight: 600;
 }
+// end skills
+
+
+// start contact
+#contact {
+    background-color: #000;
+    padding-bottom: 50px;
+}
+.contact__inner {
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+}
+.contact__box {
+    text-align: center;
+    margin: 0 0 60px;
+}
+.contact__title {
+    color: $orange;
+    margin: 100px 10px 50px;
+}
+.contact__description {
+    @include text;
+    color: #fff;
+
+    a {
+        color: rgba($orange, 0.6);
+        transition: all ease-in 0.1s;
+    }
+    a:hover {
+        color: $orange;
+    }
+}
+.contact__inner-form {
+    justify-content: center;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+.form-group + .form-group {
+    margin-bottom: 20px;
+}
+.sr-only .form__title {
+    @include text;
+    color: #fff !important;
+    font-size: 15px;
+}
+.form-control::placeholder {
+    font-family: Raleway, "Times New Roman", Times, sans-serif;
+    font-weight: 300;
+}
+.btn__block {
+    width: 100%;
+    text-align: center;
+    font-family: Raleway, "Times New Roman", Times, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    color: #000;
+    border-radius: 4px;
+    padding: 5px;
+    transition: all ease-in 0.2s;
+}
+.btn__block:hover,
+.btn__block:focus,
+.btn__block:active,
+.btn__block.active {
+    outline: inherit !important;
+}
+.form-control:focus {
+    border-color: rgba($orange, 0.8) !important;
+    box-shadow: 0 1px 1px rgba(251, 195, 40, 0.075) inset, 0 0 8px rgba(251, 195, 40, 0.6) !important;
+}
+.ajax-response {
+    text-align: center;
+}
+.btn__block:hover {
+    background-color: $orange;
+}
+// end contact
 
 /* ---------------------------------------------- /*
  * Footer
@@ -711,9 +832,11 @@ padding: 0 20px 0 25px;
 	color: #fff;
 }
 
-.navbar-custom .nav li.active,
+.navbar-custom .nav li a:focus{
+	background: none;
+	outline: 0;
+}
 .navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus,
 .navbar-custom .navbar-nav > li.active a {
 	background: none;
 	outline: 0;
@@ -746,6 +869,13 @@ padding: 0 20px 0 25px;
 
 .navbar-custom .navbar-toggle .icon-bar {
 	background: #fff;
+}
+.navbar-toggle{
+	margin-right: 30px;
+}
+
+.brand__two{
+	display: none;
 }
 
 /* ---------------------------------------------- /*

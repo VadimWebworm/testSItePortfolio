@@ -33,6 +33,31 @@
         font-size: 35px;
     }
 }
+@media (max-width: 767px) {
+    .navbar-toggle {
+        .header__menu-row {
+            transition: all cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.4s !important;
+        }
+        
+    }
+    .menu__btn-active {
+        margin-top: 15px;
+        .header__menu-row {
+            background-color: $orange !important;
+            margin-bottom: -4px;
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        .down-row {
+            transform: rotate(-48deg);
+            background-color: $orange !important;
+            margin-top: 2px !important;
+        }
+        .header__menu-remove {
+            display: none;
+        }
+    }
+}
 @media (max-width: 760px) {
     .service__title {
         font-size: 60px;
@@ -301,5 +326,11 @@
     }
     .service__inner-iconbox {
         width: 240px;
+    }
+    .brand__one{
+        display: none;
+    }
+    .brand__two{
+        display: block;
     }
 }
