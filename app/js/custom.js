@@ -193,7 +193,8 @@
 		$('.navbar-toggle').toggleClass('menu__btn-active');
 	})
 
-	$(".paroller, [data-paroller-factor]").paroller({ factor: 0.5, factorXs: 0.2, factorSm: 0.3, type: 'background', direction: 'horizontal' });
+	var s = skrollr.init();
+	
 	class Particle {
 		//Конструктор принимает положение частицы по трём осям и цвет
 		constructor(x, y, z, color, index) {
