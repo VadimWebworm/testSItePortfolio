@@ -114,7 +114,7 @@
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 			$('.calltoaction__button').removeClass('button');
 		}
-		$('.calltoaction').parallax('100%', 0.5);
+		// $('.calltoaction').parallax('100%', 0.5);
 
 
 		// // var $height = $(window).height(); // Высота экрана 
@@ -193,5 +193,90 @@
 		$('.navbar-toggle').toggleClass('menu__btn-active');
 	})
 
-	
+	$(".paroller, [data-paroller-factor]").paroller({ factor: 0.5, factorXs: 0.2, factorSm: 0.3, type: 'background', direction: 'horizontal' });
+	class Particle {
+		//Конструктор принимает положение частицы по трём осям и цвет
+		constructor(x, y, z, color, index) {
+			this.x = x;
+			this.y = y;
+			this.z = z;
+
+			//Размытие и скорость зависят от положения частицы по оси Z
+			//Чем выше частица, тем более размытой она будет и тем быстрее она будет двигаться
+			let blurs = [0, 2, 1, 0];
+
+			this.blur = blurs[z];
+			this.speed = z;
+			this.color = color;
+			this.index = index
+		}
+
+		//Метод движения частицы
+		Move(d) {
+			this.y += this.speed * d;
+		}
+	}
+
+	//Позиция полосы прокрутки
+	let scrollPosition = 0;
+
+	//Получаем контейнер для частиц
+	const particlesContainer = document.getElementById("particles");
+
+	//Создаём массив с частицами
+	const particles =
+		[
+			new Particle(1650, 450, 3, "#ffd100", 0),
+			new Particle(1700, 450, 1, "#ffd100", -1),
+			new Particle(220, 500, 3, "#ffd100", -1),
+			new Particle(600, 700, 1, "#ffd100", -1),
+			new Particle(900, 600, 4, "#ffd100", -1),
+			new Particle(1200, 900, 2, "#ffd100", -1),
+		];
+
+	//Это функция вывода частицы на страницу
+	Fill();
+
+	//При каждой прокрутке вызываем функцию Scroll(), которая двигает частицы
+	window.addEventListener("scroll", function (e) { Scroll(e); });
+
+	function Scroll(e) {
+		//Определяем, в каком направлении была прокрутка
+		let d = 0;
+
+		if (window.pageYOffset > scrollPosition) {
+			d = 1;
+		}
+		else {
+			d = -1;
+		}
+
+		scrollPosition = window.pageYOffset;
+
+		//Двигаем все частицы в заданном направлении
+		for (let i = 0; i < particles.length; i++) {
+			particles[i].Move(d);
+		}
+
+		//Выводим всё на страницу
+		Fill();
+	}
+
+	function Fill() {
+		// let ground = document.querySelector()
+		// if()
+		//Очищаем контейнер
+		particlesContainer.innerHTML = "";
+
+		//Создаём новые элементы с обновлёнными свойствами и помещаем их в контейнер
+		for (let i = 0; i < particles.length; i++) {
+			let div = document.createElement("div");
+			div.className = "particle";
+
+			div.setAttribute("style", "top: " + particles[i].y + "px; left: " + particles[i].x + "px; z-index: " + particles[i].z + "px; filter: blur(" + particles[i].blur + "px); background: " + particles[i].color + "; z-index: " + particles[i].index + "; ");
+			particlesContainer.appendChild(div);
+		}
+	}
+
+
 })(jQuery);

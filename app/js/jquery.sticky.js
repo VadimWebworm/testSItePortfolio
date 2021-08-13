@@ -41,7 +41,6 @@
           if (s.currentTop !== null) {
             s.stickyElement
               .css('position', '')
-              .css('max-width', $width)
               .css('top', '');
             s.stickyElement.trigger('sticky-end', [s]).parent().removeClass(s.className);
             s.currentTop = null;
@@ -58,7 +57,6 @@
           if (s.currentTop != newTop) {
             s.stickyElement
               .css('position', 'fixed')
-              // .css('max-width', $width)
               .css('top', newTop);
 
             if (typeof s.getWidthFrom !== 'undefined') {
