@@ -193,11 +193,11 @@
 		$('.navbar-toggle').toggleClass('menu__btn-active');
 	})
 
-	var s = skrollr.init();
+	// var s = skrollr.init();
 	
 	class Particle {
 		//Конструктор принимает положение частицы по трём осям и цвет
-		constructor(x, y, z, color, index) {
+		constructor(x, y, z, color, index, opacity) {
 			this.x = x;
 			this.y = y;
 			this.z = z;
@@ -210,6 +210,7 @@
 			this.speed = z;
 			this.color = color;
 			this.index = index
+			this.opacity = opacity
 		}
 
 		//Метод движения частицы
@@ -227,12 +228,27 @@
 	//Создаём массив с частицами
 	const particles =
 		[
-			new Particle(1650, 450, 3, "#ffd100", 0),
-			new Particle(1700, 450, 1, "#ffd100", -1),
-			new Particle(220, 500, 3, "#ffd100", -1),
-			new Particle(600, 700, 1, "#ffd100", -1),
-			new Particle(900, 600, 4, "#ffd100", -1),
-			new Particle(1200, 900, 2, "#ffd100", -1),
+			new Particle(1650, 450, 3, "#fee5a5", 1, 1),
+			new Particle(1700, 450, 1, "#ffd100", 1, 1),
+			new Particle(220, 500, 3, "#fee5a5", 1, 1),
+			new Particle(550, 700, 1, "#ffd100", 1, 1),
+			new Particle(1000, 600, 2, "#ffee32", 1, 1),
+			new Particle(1200, 900, 2, "#ffd100", 1, 1),
+			new Particle(1080, 900, 1, "#ffee32", 1, 1),
+			new Particle(1350, 750, 5, "#fee5a5", 1, 1),
+			new Particle(1470, 150, 2, "#ffd100", 1, 1),
+			new Particle(350, 300, 4, "#ffee32", 1, 1),
+			new Particle(500, 200, 3, "#ffee32", 1, 1),
+			new Particle(750, 1000, 1, "#ffd100", 1, 1),
+			new Particle(1120, 620, 4, "#ffee32", 1, 1),
+			new Particle(1990, 150, 3, "#ffd100", 1, 1),
+			new Particle(1850, 550, 5, "#fee5a5", 1, 1),
+			new Particle(2070, 150, 2, "#ffd100", 1, 1),
+			new Particle(2350, 700, 4, "#ffee32", 1, 1),
+			new Particle(100, 300, 3, "#ffee32", 1, 1),
+			new Particle(50, 900, 1, "#ffd100", 1, 1),
+			new Particle(20, 1020, 4, "#ffd100", 1, 1),
+			new Particle(120, 450, 3, "#fee5a5", 1, 1),
 		];
 
 	//Это функция вывода частицы на страницу
@@ -274,7 +290,7 @@
 			let div = document.createElement("div");
 			div.className = "particle";
 
-			div.setAttribute("style", "top: " + particles[i].y + "px; left: " + particles[i].x + "px; z-index: " + particles[i].z + "px; filter: blur(" + particles[i].blur + "px); background: " + particles[i].color + "; z-index: " + particles[i].index + "; ");
+			div.setAttribute("style", "top: " + particles[i].y + "px; left: " + particles[i].x + "px; z-index: " + particles[i].z + "px; filter: blur(" + particles[i].blur + "px); background: " + particles[i].color + "; z-index: " + particles[i].index + "; opacity: " + particles[i].opacity + "; ");
 			particlesContainer.appendChild(div);
 		}
 	}
