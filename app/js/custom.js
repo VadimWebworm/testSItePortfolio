@@ -55,7 +55,7 @@
 			$('.chart').each(function () {
 				$(this).easyPieChart({
 					size: 140,
-					animate: 2000,
+					animate: 3500,
 					lineCap: 'butt',
 					scaleColor: false,
 					barColor: '#ffd100',
@@ -104,12 +104,18 @@
 
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 			$('#home').css({ 'background-attachment': 'scroll' });
-			// $('.calltoaction').css({ 'background-attachment': 'scroll' });
+			$('.calltoaction').css({ 'background-attachment': 'scroll' });
 			$('#services').css({ 'background-attachment': 'scroll' });
 			$('#footer').css({ 'background-attachment': 'scroll' });
 
 		} else {
 			$('#home').parallax('50%', 0.1);
+			$('.calltoaction').parallax('50%', 0.1);
+			$('#services').parallax('50%', 0.1);
+			$('#footer').parallax('50%', 0.1);
+
+
+
 		}
 		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 			$('.calltoaction__button').removeClass('button');
@@ -193,8 +199,8 @@
 		$('.navbar-toggle').toggleClass('menu__btn-active');
 	})
 
-	// var s = skrollr.init();
-	
+
+
 	class Particle {
 		//Конструктор принимает положение частицы по трём осям и цвет
 		constructor(x, y, z, color, index, opacity) {

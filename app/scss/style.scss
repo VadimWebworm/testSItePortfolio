@@ -8,7 +8,7 @@
     // background: url(../images/item-3.jpg);
     background-repeat: repeat;
     background-position: center;
-    // background-attachment: fixed;
+    background-attachment: fixed;
     background-size: cover;
     padding: 70px 0;
     color: #fff;
@@ -67,7 +67,7 @@
 /* ---------------------------------------------- */
 
 #home {
-	background: url(../images/cover.jpg);
+	background: url(../images/cover_bg.jpg);
 	background-color: #222;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -439,6 +439,7 @@ padding: 0 20px 0 25px;
     font-weight: 600;
     text-transform: uppercase;
     border: none;
+    background-color: #fff;
     color: #000;
     border-radius: 4px;
     padding: 5px;
@@ -474,6 +475,8 @@ padding: 0 20px 0 25px;
 }
 
 .copyright {
+    position: relative;
+    z-index: 1000;
     margin: 0;
     @include text;
     color: #fff;
@@ -489,26 +492,6 @@ padding: 0 20px 0 25px;
 }
 #footer span:hover {
     color: rgba($orange, 1);
-}
-.footer__inner {
-}
-.footer__sphere {
-    // background-attachment: fixed;
-    background-position: 50% 0;
-    background-size: 200px 200px;
-    // padding-top: 200px;
-    background-clip: border-box;
-    border-bottom: 284px dotted transparent;
-    // background-size: contain;
-    z-index: -10;
-    opacity: 0.5;
-    right: 145px;
-    width: 200px;
-    // height: 300px;
-    // top: -110px;
-    height: 238px;
-    top: 703px;
-    transform: rotate(180deg);
 }
 
 .copyright__name {
