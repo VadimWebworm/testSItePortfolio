@@ -38,7 +38,6 @@
         .header__menu-row {
             transition: all cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.4s !important;
         }
-        
     }
     .menu__btn-active {
         margin-top: 15px;
@@ -103,60 +102,6 @@
         margin-top: -8em;
         margin-bottom: 0;
     }
-   
-}
-@media (max-width: 710px) {
-    // .menu__list {
-    //     display: none;
-    // }
-    // .header__inner {
-    //     position: relative;
-    // }
-    // .header__menu-btn {
-    //     position: absolute;
-    //     display: block;
-    //     right: 20px;
-    //     &::before {
-    //         position: absolute;
-    //         top: 50%;
-    //         left: 50%;
-    //         transform: translate(-50%, -50%);
-    //         font-size: 36px;
-    //         color: #fff;
-    //     }
-    //     .header__menu-row {
-    //         transition: all cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.4s;
-    //     }
-    // }
-    // .menu__btn-active {
-    //     .header__menu-row {
-    //         background-color: $orange;
-    //         margin-bottom: -4px;
-    //         transform: rotate(45deg);
-    //         transition: all 0.5s;
-    //     }
-    //     .down-row {
-    //         transform: rotate(-45deg);
-    //     }
-    //     .header__menu-remove {
-    //         display: none;
-    //     }
-    // }
-    // .header__box {
-    //     display: flex;
-    //     align-items: center;
-    //     transition: all 0.5s;
-    //     left: 100%;
-    //     right: -100%;
-    //     z-index: 20000;
-    //     position: absolute;
-    //     background-color: #fff;
-    //     height: 70px;
-    //     &.active {
-    //         left: 70px;
-    //         right: 90px;
-    //     }
-    // }
 }
 @media (max-width: 640px) {
     .service__title {
@@ -251,20 +196,23 @@
         background: none;
         padding-left: 0;
     }
-   
-    .service__inner{
+
+    .service__inner {
         position: relative;
         z-index: 10000;
     }
-   
 }
 
 @media (max-width: 420px) {
+    .service__title{
+        margin-top: 0;
+        padding-top: 50px;
+    }
     .intro h1 {
         font-size: 25px;
         margin: 5px 0;
     }
-    .intro{
+    .intro {
         padding: 0 10px;
     }
     .start {
@@ -311,7 +259,7 @@
     .start {
         font-size: 12px;
     }
-   
+
     // .header__logo {
     //     display: none;
     //     &-adaptive {
@@ -327,10 +275,10 @@
     .service__inner-iconbox {
         width: 240px;
     }
-    .brand__one{
+    .brand__one {
         display: none;
     }
-    .brand__two{
+    .brand__two {
         display: block;
     }
 }
